@@ -3,8 +3,7 @@ package org.openapitools.api;
 import org.openapitools.api.*;
 import org.openapitools.model.*;
 
-import org.wso2.msf4j.formparam.FormDataParam;
-import org.wso2.msf4j.formparam.FileInfo;
+import org.glassfish.jersey.media.multipart.FormDataBodyPart;
 
 
 import java.util.List;
@@ -14,8 +13,8 @@ import java.io.InputStream;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
-
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2020-10-26T13:10:19.713Z[GMT]")
+import javax.validation.constraints.*;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2020-10-26T13:27:38.937Z[GMT]")
 public abstract class DefaultApiService {
-    public abstract Response homepage() throws NotFoundException;
+    public abstract Response homepage(SecurityContext securityContext) throws NotFoundException;
 }
