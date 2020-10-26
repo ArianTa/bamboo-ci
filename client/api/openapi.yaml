@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  description: Dummy application to test different devops tools
+  title: Dummy application
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /:
+    get:
+      operationId: homepage
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: A JSON
+      summary: Get homepage
+      x-accepts: text/plain
+components:
+  schemas: {}
+
