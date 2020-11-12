@@ -45,8 +45,8 @@ jobs:
         with:
           push: true
           tags: |
-            atahiraj/server:latest
-            atahiraj/server:1.0.0
+            ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:${COLON_TAG}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${IMAGE_NAME}:latest
       
       # Logout from docker hub
       - name: Logout from DockerHub
