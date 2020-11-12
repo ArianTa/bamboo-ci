@@ -10,6 +10,10 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  COLONG_TAG: "1.0.0"
+  IMAGE_NAME: server
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -41,8 +45,8 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/server:1.0.0
-            ${{ secrets.DOCKERHUB_USERNAME }}/server:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{IMAGE_NAME}}:${{COLON_TAG}}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{IMAGE_NAME}}:latest
       
       # Logout from docker hub
       - name: Logout from DockerHub
