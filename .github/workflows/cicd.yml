@@ -39,7 +39,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$COLON_TAG
-        
-      - name: Logout
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/server:1:0:0
+      
+      # Logout from docker hub
+      - name: Logout from DockerHub
+        id: docker_logout
         run: docker logout
