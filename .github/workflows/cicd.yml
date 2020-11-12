@@ -69,7 +69,7 @@ jobs:
       # Pulling the image
       - name: Pulling image
         run: |
-          IMAGE_ID: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$COLON_TAG
+          IMAGE_ID=${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$COLON_TAG
           echo $IMAGE_ID
           docker-compose -f docker-compose-integration-test.yml pull
       
