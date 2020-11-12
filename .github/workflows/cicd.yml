@@ -73,7 +73,7 @@ jobs:
           docker-compose -f docker-compose-integration-test.yml pull
           docker run --rm $IMAGE_ID python -m pytest
           docker-compose -f docker-compose-integration-test.yml up
-          docker-compose down -v
+          docker-compose -f docker-compose-integration-test.yml down -v
 
       # Logout from docker hub
       - name: Logout from DockerHub
