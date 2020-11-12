@@ -69,7 +69,9 @@ jobs:
 
       # Pulling the image
       - name: Pulling image
-        run: docker-compose -f docker-compose-integration-test.yml pull
+        run: |
+          echo $IMAGE_ID
+          docker-compose -f docker-compose-integration-test.yml pull
       
       # Running unit tests
       - name: Unit test
