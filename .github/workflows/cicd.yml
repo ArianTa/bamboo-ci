@@ -56,8 +56,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: build
-    env:
-      IMAGE_ID: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$COLON_TAG
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
@@ -69,18 +67,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Pulling the image
-      - name: Pulling image
+      - name: Pulling & Unit test & integration test
         run: |
-          echo $IMAGE_ID
+          export IMAGE_ID=${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE_NAME:$COLON_TAG
           docker-compose -f docker-compose-integration-test.yml pull
-      
-      # Running unit tests
-      - name: Unit test
-        run: docker run --rm $IMAGE_ID python -m pytest
-
-      # Running integration tests and cleaning up
-      - name: Integration test
-        run: | 
+          docker run --rm $IMAGE_ID python -m pytest
           docker-compose -f docker-compose-integration-test.yml up
           docker-compose down -v
 
@@ -88,3 +79,4 @@ jobs:
       - name: Logout from DockerHub
         id: docker_logout
         run: docker logout
+
