@@ -4,4 +4,4 @@ services:
   server:
     image: $IMAGE_ID
     build: ./
-    command: python3 -m pytest
+    command: python -m pytest
