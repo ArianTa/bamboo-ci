@@ -45,8 +45,8 @@ jobs:
         with:
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{IMAGE_NAME}}:${{COLON_TAG}}
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{IMAGE_NAME}}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ IMAGE_NAME }}:${{ COLON_TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ IMAGE_NAME }}:latest
       
       # Logout from docker hub
       - name: Logout from DockerHub
