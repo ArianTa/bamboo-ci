@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  server:
+    image: $IMAGE_ID
+    build: ./
+    command: python -m pytest

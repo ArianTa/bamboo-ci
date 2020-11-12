@@ -10,6 +10,11 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  IMAGE_NAME: server
+  COLON_TAG: "1.0.0"
+  IMAGE_ID: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$COLON_TAG
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -64,11 +69,11 @@ jobs:
 
       # Pulling the image
       - name: Pulling image
-        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/server:1.0.0
+        run: docker-compose -f docker-compose-integration-test.yml pull
       
       # Running unit tests
       - name: Unit test
-        run: docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/server:1.0.0 python -m pytest
+        run: docker run --rm $IMAGE_ID python -m pytest
 
       # Running integration tests and cleaning up
       - name: Integration test
@@ -80,5 +85,3 @@ jobs:
       - name: Logout from DockerHub
         id: docker_logout
         run: docker logout
-
-  

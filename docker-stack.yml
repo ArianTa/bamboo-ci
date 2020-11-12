@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  server:
+    image: $IMAGE_ID
+    ports: 
+      - '8080:8080'
+    command: python3 -m openapi_server
